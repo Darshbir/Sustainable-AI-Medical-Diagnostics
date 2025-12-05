@@ -50,3 +50,65 @@ To simulate a realistic, heterogeneous deployment scenario, this research was co
 git clone [https://github.com/your-username/Sustainable-AI-Medical-Diagnostics.git](https://github.com/your-username/Sustainable-AI-Medical-Diagnostics.git)
 cd Sustainable-AI-Medical-Diagnostics
 pip install -r requirements.txt
+```
+# Usage
+
+Open **`demo_pipeline.ipynb`** and execute the cells sequentially.  
+The notebook will:
+
+1. **Download the OrganAMNIST dataset automatically.**  
+2. **Initialize the CNN, SNN, and Quantum classifiers.**  
+3. **Run a single-epoch training demonstration** with energy tracking enabled via **CodeCarbon**.
+
+---
+
+## ⚠️ Demo Configuration vs. Paper Results
+
+**Note:**  
+The repository is configured as a **Minimal Working Example (MWE)** so it runs easily on laptops/CPUs.  
+To reproduce the **full paper results**, update the hyperparameters as shown below:
+
+| Parameter | Paper Configuration (Production) | Demo Configuration (Repository) |
+|----------|----------------------------------|---------------------------------|
+| **Epochs** | 50 – 100 | 1 |
+| **SNN Timesteps (T)** | 20 | 10 |
+| **Batch Size** | 128 | 16 |
+| **Hardware** | NVIDIA A6000 | CPU / Standard GPU |
+
+---
+
+## 🧠 Architectures & Extensions
+
+### Core Models
+
+The notebook defines the following models:
+
+- **SmallCNN** – Lightweight CNN optimized for 28×28 inputs.  
+- **SimpleSNN** – Leaky Integrate-and-Fire (LIF) SNN using *snnTorch* with rate encoding.  
+- **QuantumClassifier** – Hybrid model using PennyLane with a Variational Quantum Circuit (VQC) head.
+
+---
+
+## 🔮 Future Directions (Included in Code)
+
+To support research extensions discussed in the study, the notebook includes experimental preprocessing modules for:
+
+- **Discrete Wavelet Transform (DWT)**
+- **Discrete Cosine Transform (DCT)**
+- **Compressive Sensing (CS) approximations**
+
+These are implemented as **modular functions**, enabling exploration of spectral-domain SNN optimization.
+
+---
+
+## 📊 Results Summary
+
+The following results (adapted from Table II of the paper) show accuracy–energy trade-offs:
+
+| Architecture | Accuracy | Energy (kWh) | Emissions (kgCO₂) | Status |
+|-------------|----------|--------------|--------------------|--------|
+| **CNN (GPU)** | 82.6% | 0.001299 | 0.000512 | High Perf / High Cost |
+| **SNN v1 (GPU)** | 77.3% | 0.000171 | 0.000067 | Optimal Balance (+EPS) |
+| **CNN (CPU)** | 79.0% | 0.000399 | 0.000157 | Baseline |
+
+---
