@@ -1,0 +1,17 @@
+medmnist
+torch
+torchvision
+torchaudio
+scikit-learn
+numpy
+scipy
+matplotlib
+pandas
+tqdm
+snntorch
+PyWavelets
+codecarbon
+pyRAPL
+pennylane
+pennylane-qiskit
+pymongo>=3.9.0
